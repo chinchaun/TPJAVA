@@ -13,6 +13,8 @@ public class Piece {
     private boolean available;
     private int x;
     private int y;
+    private PieceEnum Type;
+    private int Id;
 
     public Piece(boolean available, int x, int y) {
         super();
@@ -39,6 +41,19 @@ public class Piece {
     }
     public void setY(int y) {
         this.y = y;
+    }
+    public int getId() {
+        return this.Id;
+    }
+    public void setId(int Id) {
+        this.Id = Id;
+    }
+    
+    public PieceEnum getType() {
+        return Type;
+    }
+    public void setType(PieceEnum Type) {
+        this.Type = Type;
     }
 
     public boolean isValid(Board board, int fromX, int fromY, int toX, int toY){

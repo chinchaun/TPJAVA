@@ -14,8 +14,9 @@ public class Rook extends Piece{
     public Rook(boolean available, int x, int y) {
         super(available, x, y);
         // TODO Auto-generated constructor stub
+          this.setType(PieceEnum.ROOK);
+         
     }
-
 
     @Override
     public boolean isValid(Board board, int fromX, int fromY, int toX, int toY) {

@@ -13,7 +13,7 @@ public class Bishop extends Piece{
 
     public Bishop(boolean available, int x, int y) {
         super(available, x, y);
-        // TODO Auto-generated constructor stub
+        this.setType(PieceEnum.BISHOP);
     }
 
     @Override

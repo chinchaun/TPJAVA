@@ -5,6 +5,7 @@
  */
 package Data;
 
+import com.mysql.jdbc.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -16,9 +17,9 @@ public class ConexionFactory {
     private String dbDriver="com.mysql.jdbc.Driver";
     private String host="localhost";
     private String port="3306";
-    private String user="julian";
-    private String pass="1234";
-    private String db="ajedrez";
+    private String user="root";
+    private String pass="root";
+    private String db="chess";
     private Connection conn;
     private static ConexionFactory instancia;
 	

@@ -17,6 +17,7 @@ public class Player {
     public final int BISHOPS = 2;
     public final int ROOKS = 2;
     public int dni;
+    public int id;
 
     private List<Piece> pieces = new ArrayList<>();
 
@@ -51,6 +52,18 @@ public class Player {
     
     public int getDni(){
         return this.dni;
+    }
+    
+    public void setDni(int dni){
+        this.dni = dni;
+    }
+    
+    public int getId(){
+        return this.id;
+    }
+    
+    public void setId(int id){
+        this.id = id;
     }
 
     

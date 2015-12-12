@@ -10,10 +10,12 @@ package Models;
  * @author jjdelannoy
  */
 public class Pawn extends Piece{
-    
     public Pawn(boolean available, int x, int y) {
         super(available, x, y);
+         this.setType(PieceEnum.PAWN);
+         
     }
+
     
     @Override
     public boolean isValid(Board board, int fromX, int fromY, int toX, int toY) {

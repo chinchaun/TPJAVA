@@ -10,10 +10,12 @@ package Models;
  * @author jjdelannoy
  */
 public class Queen extends Piece{
-
+    
     public Queen(boolean available, int x, int y) {
         super(available, x, y);
+        this.setType(PieceEnum.QUEEN);
     }
+ 
 
     @Override
     public boolean isValid(Board board, int fromX, int fromY, int toX, int toY) {

@@ -10,10 +10,11 @@ package Models;
  * @author jjdelannoy
  */
 public class King extends Piece{
-
+ 
     public King(boolean available, int x, int y) {
         super(available, x, y);
-        // TODO Auto-generated constructor stub
+        this.setType(PieceEnum.KING);
+        
     }
 
     @Override

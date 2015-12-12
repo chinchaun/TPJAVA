@@ -13,11 +13,21 @@ public class Game {
     private Board board;
     private Player white;
     private Player black;
+    private int turn;
+    private int id;
+    
     public Game(Player white, Player black) {
         super();
         this.white = white;
         this.black = black;
         initializeBoardGivenPlayers();
+    }
+    
+    public Game(int id, Player white, Player black){
+        super();
+        this.white = white;
+        this.black = black;
+        this.id = id;
     }
 
     public void setColorWhite(Player player) {
@@ -50,6 +60,22 @@ public class Game {
 
     public void setBlack(Player black) {
         this.black = black;
+    }
+    
+    public int getId(){
+        return this.id;
+    }
+    
+    public void setId(int id){
+        this.id = id;
+    }
+    
+      public int getTurn(){
+        return this.turn;
+    }
+    
+    public void setTurn(int turn){
+        this.turn = turn;
     }
 
     private void initializeBoardGivenPlayers() {

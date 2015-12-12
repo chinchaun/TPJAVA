@@ -96,4 +96,21 @@ public  class  GameController {
         return response;
     }
     
+    public void saveGame(int dniWhite, int dniBlack){
+        this.game.getWhite().setDni(dniWhite);
+        this.game.getBlack().setDni(dniBlack);
+        this.game.getWhite().setId(Data.Player.savePlayer(this.game.getWhite()));
+        this.game.getBlack().setId(Data.Player.savePlayer(this.game.getBlack()));
+        this.game.setId(Data.Game.saveGame(this.game));
+        for (Piece piece : this.game.getWhite().getPieces()) {
+            piece.setId(Data.Piece.savePiece(piece));
+            Data.GamePiece.saveGamePiece(this.game, piece.getId());
+        }
+        for (Piece piece : this.game.getBlack().getPieces()) {
+            piece.setId(Data.Piece.savePiece(piece));
+            Data.GamePiece.saveGamePiece(this.game, piece.getId());
+        }
+        
+    }
+    
 }

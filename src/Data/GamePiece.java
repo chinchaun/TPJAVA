@@ -15,9 +15,9 @@ import java.util.List;
  *
  * @author jjdelannoy
  */
-public class Game {
+public class GamePiece {
     
-    public static List<Models.Game> getAll(){
+    public static List<Models.Game> getAllByGameId(int gameId){
         ResultSet rs=null;
         PreparedStatement stmt=null;
         List<Models.Game> games = new ArrayList<>();
@@ -25,13 +25,12 @@ public class Game {
         try {
             
             stmt = ConexionFactory.getInstancia().getConn().prepareStatement(
-                        "select id, idplayer1, idplayer2 from game a;");
+                        "select id, idgame, idplayer1, idplayer2, turn, idpiece from game_piece;");
             rs = stmt.executeQuery();
             
             while(rs.next()){
-                
-                Models.Player player1 = new Models.Player(rs.getInt("id"));
-                Models.Player player2 = new Models.Player(rs.getInt("id"));
+                Models.Player player1 = Player.getPlayerById(rs.getInt("id"));
+                Models.Player player2 = Player.getPlayerById(rs.getInt("id"));
                 
                 Models.Game game = new Models.Game(rs.getInt("id"), player1, player2);
                 games.add(game); 
@@ -58,28 +57,25 @@ public class Game {
                 ConexionFactory.getInstancia().releaseConn();
                 
         }
+        
         return games;
     };
     
-    public static int saveGame(Models.Game  game){
+    public static void saveGamePiece(Models.Game game, int pieceId){
         
         ResultSet rs=null;
         PreparedStatement stmt=null;
-        int idgame = 0;
 
         try {
 
             stmt = ConexionFactory.getInstancia().getConn().prepareStatement(
-                            "insert into game(idplayer1, idplayer2, turn) values (?, ?, ?)",PreparedStatement.RETURN_GENERATED_KEYS
+                            "insert into game_piece(idgame, idplayer1, idplayer2, idpiece) values (?, ?, ?, ?)",PreparedStatement.RETURN_GENERATED_KEYS
                        );
-            stmt.setInt(1, game.getWhite().getId());
-            stmt.setInt(2, game.getBlack().getId());
-            stmt.setInt(3, game.getTurn());
-            stmt.executeUpdate();
-            ResultSet rsId = stmt.getGeneratedKeys();
-            rsId.next();
-            idgame = rsId.getInt(1);
-
+            stmt.setInt(1, game.getId());
+            stmt.setInt(2, game.getWhite().getId());
+            stmt.setInt(3, game.getBlack().getId());
+            stmt.setInt(5, pieceId);
+            stmt.execute();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -95,6 +91,5 @@ public class Game {
 
             ConexionFactory.getInstancia().releaseConn();
             }
-         return idgame;
     };
 }

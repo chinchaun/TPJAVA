@@ -38,7 +38,7 @@ public class TableroGrilla extends javax.swing.JFrame {
         tableBlack = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableWhite = new javax.swing.JTable();
-        btnJugar = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtPlayer1 = new javax.swing.JTextField();
         txtPlayer2 = new javax.swing.JTextField();
@@ -51,6 +51,7 @@ public class TableroGrilla extends javax.swing.JFrame {
         txtBlackY = new javax.swing.JTextField();
         btnBlackMove = new javax.swing.JButton();
         btnWhiteMove = new javax.swing.JButton();
+        btnJugar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,10 +81,10 @@ public class TableroGrilla extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tableWhite);
 
-        btnJugar.setText("Jugar!");
-        btnJugar.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnSave.setText("Guardar Partida");
+        btnSave.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnJugarMouseClicked(evt);
+                btnSaveMouseClicked(evt);
             }
         });
 
@@ -137,6 +138,13 @@ public class TableroGrilla extends javax.swing.JFrame {
             }
         });
 
+        btnJugar1.setText("Jugar!");
+        btnJugar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnJugar1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -166,9 +174,9 @@ public class TableroGrilla extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(txtPlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(173, 173, 173)
-                .addComponent(btnJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,32 +186,40 @@ public class TableroGrilla extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnBlackMove, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(54, 54, 54))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(356, 356, 356)
+                    .addComponent(btnJugar1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(542, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(txtPlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnJugar)
-                        .addComponent(jLabel1)
-                        .addComponent(txtPlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(cmbWhitePlayer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtWhiteX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtWhiteY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnWhiteMove)))
+                                .addComponent(jLabel2)
+                                .addComponent(txtPlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel1)
+                                .addComponent(txtPlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(cmbWhitePlayer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(txtWhiteX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtWhiteY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnWhiteMove)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
+                        .addGap(34, 34, 34)
+                        .addComponent(btnSave)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cmbBlackPlayer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtBlackX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -213,7 +229,12 @@ public class TableroGrilla extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(35, 35, 35)
+                    .addComponent(btnJugar1)
+                    .addContainerGap(500, Short.MAX_VALUE)))
         );
 
         pack();
@@ -227,26 +248,23 @@ public class TableroGrilla extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPlayer2ActionPerformed
 
-    private void btnJugarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnJugarMouseClicked
+    private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
         if(txtPlayer1.getText().isEmpty() || txtPlayer2.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Ingrese Los DNI de los Jugadores");
         }
         else{
-            this.gameCtrl = new GameController();
-            gameCtrl.InitializeGame(true, Integer.parseInt(txtPlayer1.getText()), Integer.parseInt(txtPlayer2.getText()));
-            ShowPiecesPositions();
-            LoadComboBoxPieces();
+            this.gameCtrl.saveGame(Integer.parseInt(txtPlayer1.getText()), Integer.parseInt(txtPlayer2.getText()));
         };
+        JOptionPane.showMessageDialog(null, "Partida Guardada!");
 
         
-    }//GEN-LAST:event_btnJugarMouseClicked
+    }//GEN-LAST:event_btnSaveMouseClicked
 
     private void btnBlackMoveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBlackMoveMouseClicked
-        // TODO add your handling code here:
+        MakeMovement((Piece)cmbBlackPlayer.getSelectedItem(), Integer.parseInt(txtBlackX.getText()), Integer.parseInt(txtBlackY.getText()));
     }//GEN-LAST:event_btnBlackMoveMouseClicked
 
     private void btnWhiteMoveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnWhiteMoveMouseClicked
-        //Piece piece = (Piece)cmbWhitePlayer.getSelectedItem();
         MakeMovement((Piece)cmbWhitePlayer.getSelectedItem(), Integer.parseInt(txtWhiteX.getText()), Integer.parseInt(txtWhiteY.getText()));
     }//GEN-LAST:event_btnWhiteMoveMouseClicked
 
@@ -265,6 +283,18 @@ public class TableroGrilla extends javax.swing.JFrame {
         txtBlackX.setText(String.valueOf(piece.getX()));
         txtBlackY.setText(String.valueOf(piece.getY()));
     }//GEN-LAST:event_cmbBlackPlayerItemStateChanged
+
+    private void btnJugar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnJugar1MouseClicked
+        if(txtPlayer1.getText().isEmpty() || txtPlayer2.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Ingrese Los DNI de los Jugadores");
+        }
+        else{
+            this.gameCtrl = new GameController();
+            gameCtrl.InitializeGame(true, Integer.parseInt(txtPlayer1.getText()), Integer.parseInt(txtPlayer2.getText()));
+            ShowPiecesPositions();
+            LoadComboBoxPieces();
+        };
+    }//GEN-LAST:event_btnJugar1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -303,7 +333,8 @@ public class TableroGrilla extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBlackMove;
-    private javax.swing.JButton btnJugar;
+    private javax.swing.JButton btnJugar1;
+    private javax.swing.JButton btnSave;
     private javax.swing.JButton btnWhiteMove;
     private javax.swing.JComboBox cmbBlackPlayer;
     private javax.swing.JComboBox cmbWhitePlayer;

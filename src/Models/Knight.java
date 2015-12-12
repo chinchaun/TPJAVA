@@ -10,9 +10,11 @@ package Models;
  * @author jjdelannoy
  */
 public class Knight extends Piece{
-
+    
     public Knight(boolean available, int x, int y) {
         super(available, x, y);
+         this.setType(PieceEnum.KNIGHT);
+        
     }
 
     @Override
