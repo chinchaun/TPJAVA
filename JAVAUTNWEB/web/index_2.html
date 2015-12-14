@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html data-ng-app="app">
+<head>
+    <style>
+        /* This helps the ng-show/ng-hide animations start at the right place. */
+        /* Since Angular has this but needs to load, this gives us the class early. */
+        .ng-hide {
+            display: none!important;
+        }
+    </style>
+    <title data-ng-bind="title">Hot Towel Angular</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+
+    <script>
+        // Must be first. IE10 mobile viewport fix
+        if ("-ms-user-select" in document.documentElement.style && navigator.userAgent.match(/IEMobile\/10\.0/)) {
+            var msViewportStyle = document.createElement("style");
+            var mq = "@-ms-viewport{width:auto!important}";
+            msViewportStyle.appendChild(document.createTextNode(mq));
+            document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+        }
+    </script>
+
+    <link href="resources/content/ie10mobile.css" rel="stylesheet" />
+    <link href="resources/content/bootstrap.min.css" rel="stylesheet" />
+    <link href="resources/content/font-awesome.min.css" rel="stylesheet" />
+    <link href="resources/content/toastr.css" rel="stylesheet" />
+    <link href="resources/content/customtheme.css" rel="stylesheet">
+    <link href="resources/content/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <div data-ng-include="'resources/app/layout/shell.html'"></div>
+        <div id="splash-page" data-ng-show="false">
+            <div class="page-splash">
+                <div class="page-splash-message">
+                    Hot Towel Angular
+                </div>
+                <div class="progress progress-striped active page-progress-bar">
+                    <div class="bar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <span data-cc-scroll-to-top></span>
+
+    <!-- Vendor Scripts -->
+    <script src="resources/scripts/jquery-2.1.1.js"></script>
+    <script src="resources/scripts/angular.js"></script>
+    <script src="resources/scripts/angular-animate.js"></script>
+    <script src="resources/scripts/angular-route.js"></script>
+    <script src="resources/scripts/angular-sanitize.js"></script>
+    <script src="resources/scripts/bootstrap.js"></script>
+    <script src="resources/scripts/toastr.js"></script>
+    <script src="resources/scripts/moment.js"></script>
+    <script src="resources/scripts/ui-bootstrap-tpls-0.10.0.js"></script>
+    <script src="resources/scripts/spin.js"></script>
+
+    <!-- Bootstrapping -->
+    <script src="resources/app/app.js"></script>
+    <script src="resources/app/config.js"></script>
+    <script src="resources/app/config.exceptionHandler.js"></script>
+    <script src="resources/app/config.route.js"></script>
+
+    <!-- common Modules -->
+    <script src="resources/app/common/common.js"></script>
+    <script src="resources/app/common/logger.js"></script>
+    <script src="resources/app/common/spinner.js"></script>
+
+    <!-- common.bootstrap Modules -->
+    <script src="resources/app/common/bootstrap/bootstrap.dialog.js"></script>
+
+    <!-- app -->
+    <script src="resources/app/admin/admin.js"></script>
+    <script src="resources/app/dashboard/dashboard.js"></script>
+    <script src="resources/app/layout/shell.js"></script>
+    <script src="resources/app/layout/sidebar.js"></script>
+    <script src="resources/app/estudios/estudiosCtrl.js"></script>
+    <script src="resources/app/pacientes/pacientesCtrl.js"></script>
+
+    <!-- app Services -->
+    <script src="resources/app/services/datacontext.js"></script>
+    <script src="resources/app/services/directives.js"></script>
+    <script src="resources/app/services/pacienteService.js"></script>
+    <script src="resources/app/services/estudioService.js"></script>
+
+
+</body>
+</html>

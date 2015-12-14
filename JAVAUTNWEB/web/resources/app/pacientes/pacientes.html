@@ -1,0 +1,57 @@
+﻿<section id="estudio-view" class="mainbar" data-ng-controller="pacientesCtrl as vm">
+    <div id="container" class="col-md-8" style="padding-top:10px">
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default" ng-click="vm.crearPaciente()">Crear Paciente</button>
+            <button type="button" class="btn btn-default" ng-click="vm.modificarPaciente()">Modificar Paciente</button>
+        </div>
+        <div id="abmWrapper" ng-show="vm.mostrarABM">
+            <form role="form">
+                <div class="form-group" ng-show="vm.isModification">
+                    <label for="selectPaciente">Paciente:</label>
+                    <select name="selectPaciente" id="selectPaciente" ng-model="paciente" ng-change="vm.selectChange(paciente)">
+                        <option ng-repeat="paciente in vm.pacientes" value="{{paciente}}">{{paciente.apellido}}, {{paciente.nombre}}</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="descripcionEstudio">Apellido Paciente:</label>
+                    <input type="text" class="" id="ApellidoPaciente" ng-model="vm.currentPaciente.apellido">
+                </div>
+                <div class="form-group">
+                    <label for="descripcionEstudio">Nombre Paciente:</label>
+                    <input type="text" class="form-control" id="nombrePaciente" ng-model="vm.currentPaciente.nombre">
+                </div>
+                <button type="button" class="btn btn-default" ng-click="vm.guardarPaciente()">Guardar</button>
+                <button type="button" class="btn btn-default" ng-click="vm.cancelarPaciente()">Cancelar</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="widget wviolet">
+            <div data-cc-widget-header title="Pacientes"
+                 allow-collapse="false"></div>
+            <div class="widget-content text-center text-info">
+                <table class="table table-condensed table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Fecha Nacimiento</th>
+                            <th>Nro ObraSocial</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-repeat="p in vm.pacientes">
+                            <td>{{p.nombre}}</td>
+                            <td>{{p.apellido}}</td>
+                            <td>{{p.fechaNacimiento}}</td>
+                            <td>{{p.nroObraSocial}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="widget-foot">
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</section>

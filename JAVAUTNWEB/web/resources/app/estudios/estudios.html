@@ -1,0 +1,50 @@
+﻿<section id="estudio-view" class="mainbar" data-ng-controller="estudiosCtrl as vm">
+    <div id="container" class="col-md-8" style="padding-top:10px">
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default" ng-click="vm.crearEstudio()">Crear Estudio</button>
+            <button type="button" class="btn btn-default" ng-click="vm.modificarEstudio()">Modificar Estudio</button>
+        </div>
+        <div id="abmWrapper" ng-show="vm.mostrarABM">
+            <form role="form">
+                <div class="form-group" ng-show="vm.isModification">
+                    <label for="selectEstudio">Estudio:</label>
+                    <!--<select ng-options="estudio in vm.estudios" ng-model="vm.currentEstudio">
+                        <option value="0">Elegir Estudio</option>
+                    </select>-->
+                    <input type="text" class="form-control" id="" ng-model="vm.currentEstudio.cod_estudio">
+                </div>
+                <div class="form-group">
+                    <label for="descripcionEstudio">Descripcion Estudio:</label>
+                    <input type="text" class="form-control" id="descripcionEstudio" ng-model="vm.currentEstudio.desc_estudio">
+                </div>
+                <button type="button" class="btn btn-default" ng-click="vm.guardarEstudio()">Guardar</button>
+                <button type="button" class="btn btn-default" ng-click="vm.cancelarEstudio()">Cancelar</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="widget wviolet">
+            <div data-cc-widget-header title="Estudios"
+                 allow-collapse="false"></div>
+            <div class="widget-content text-center text-info">
+                <table class="table table-condensed table-striped">
+                    <thead>
+                        <tr>
+                            <th>Codigo Estudio</th>
+                            <th>Descripcion Estudio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-repeat="estudio in vm.estudios">
+                            <td>{{estudio.cod_estudio}}</td>
+                            <td>{{estudio.desc_estudio}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="widget-foot">
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</section>
