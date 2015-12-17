@@ -28,40 +28,7 @@
                         content: '<i class="fa fa-dashboard"></i> Dashboard'
                     }
                 }
-            },
-            {
-                url: '/admin',
-                config: {
-                    title: 'admin',
-                    templateUrl: 'resources/app/admin/admin.html',
-                    settings: {
-                        nav: 2,
-                        content: '<i class="fa fa-lock"></i> Admin'
-                    }
-                }
-            },
-            {
-                url: '/estudios',
-                config: {
-                    title: 'estudios',
-                    templateUrl: 'resources/app/estudios/estudios.html',
-                    settings: {
-                        nav: 3,
-                        content: '<i class="fa fa-dashboard"></i> Estudios'
-                    }
-                }
-            },
-            {
-                url: '/pacientes',
-                config: {
-                    title: 'pacientes',
-                    templateUrl: 'resources/app/pacientes/pacientes.html',
-                    settings: {
-                        nav: 4,
-                        content: '<i class="fa fa-dashboard"></i> Pacientes'
-                    }
-                }
-            }
+            },   
         ];
     }
 })();

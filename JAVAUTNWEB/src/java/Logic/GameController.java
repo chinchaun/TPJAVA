@@ -32,6 +32,11 @@ public  class  GameController {
     public Game getGame(){
         return this.game;
     };
+    
+    public void setGame(Game game){
+        this.game = game;
+    }
+    
     public void InitializeGame(boolean isNewGame, int dni1, int dni2){
         if(isNewGame){
             newGame(dni1, dni2);

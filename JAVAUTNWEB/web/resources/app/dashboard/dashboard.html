@@ -2,26 +2,61 @@
     <section class="matter">
         <div class="container">
             <div class="row">
+                <label>Jugador 1</label>
+                <input type="text" class="form-control" ng-model="vm.id1"style="width: 10%" >
+                <button type="button" class="btn btn-primary" ng-click="vm.getGame()">Jugar!</button>
+            </div>
+            <div class="row">
+            <label>Jugador 2</label>
+                <input type="text" class="form-control" ng-model="vm.id2" style="width: 10%" >
+                <button type="button" class="btn btn-primary" ng-click="vm.saveGame()">Guardar Partida!</button>
+             </div>
+            <div class="row">
                 <div class="col-md-6">
                     <div class="widget wviolet">
-                        <div data-cc-widget-header title="Pacientes"
+                        <div data-cc-widget-header title="Jugador 1"
                              allow-collapse="false"></div>
                         <div class="widget-content text-center text-info">
                             <table class="table table-condensed table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Nombre</th>
-                                        <th>Apellido</th>
-                                        <th>Fecha Nacimiento</th>
-                                        <th>Nro ObraSocial</th>
+                                        <th>Ficha</th>
+                                        <th>X</th>
+                                        <th>Y </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr data-ng-repeat="p in vm.people">
-                                        <td>{{p.nombre}}</td>
-                                        <td>{{p.Apellido}}</td>
-                                        <td>{{p.fechaNacimiento}}</td>
-                                        <td>{{p.nroObraSocial}}</td>
+                                    <tr style="text-align: left;" data-ng-repeat="piece in vm.game.white.pieces">
+                                        <td >{{piece.Type}}</td>
+                                        <td>{{piece.x}}</td>
+                                        <td>{{piece.y}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="widget-foot">
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="widget wviolet">
+                        <div data-cc-widget-header title="Jugador 2"
+                             allow-collapse="false"></div>
+                        <div class="widget-content text-center text-info">
+                            <table class="table table-condensed table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Ficha</th>
+                                        <th>X</th>
+                                        <th>Y </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="text-align: left;" data-ng-repeat="piece in vm.game.black.pieces">
+                                        <td >{{piece.Type}}</td>
+                                        <td>{{piece.x}}</td>
+                                        <td>{{piece.y}}</td>
                                     </tr>
                                 </tbody>
                             </table>

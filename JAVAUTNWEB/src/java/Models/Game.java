@@ -16,6 +16,10 @@ public class Game {
     private int turn;
     private int id;
     
+    public Game(){
+    
+    }
+    
     public Game(Player white, Player black) {
         super();
         this.white = white;
