@@ -29,44 +29,8 @@ CREATE TABLE `game` (
   `turn` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `game`
---
-
-LOCK TABLES `game` WRITE;
-/*!40000 ALTER TABLE `game` DISABLE KEYS */;
-/*!40000 ALTER TABLE `game` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `game_piece`
---
-
-DROP TABLE IF EXISTS `game_piece`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `game_piece` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `idgame` int(11) NOT NULL,
-  `idplayer1` int(11) NOT NULL,
-  `idplayer2` int(11) NOT NULL,
-  `turn` int(11) NOT NULL,
-  `idpiece` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `game_piece`
---
-
-LOCK TABLES `game_piece` WRITE;
-/*!40000 ALTER TABLE `game_piece` DISABLE KEYS */;
-/*!40000 ALTER TABLE `game_piece` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `piece`
@@ -79,19 +43,12 @@ CREATE TABLE `piece` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` int(11) NOT NULL,
   `posx` int(11) NOT NULL,
-  `posy` varchar(45) NOT NULL,
+  `posy` int(11) NOT NULL,
+  `gameid` int(11) DEFAULT NULL,
+  `playerid` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=579 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `piece`
---
-
-LOCK TABLES `piece` WRITE;
-/*!40000 ALTER TABLE `piece` DISABLE KEYS */;
-/*!40000 ALTER TABLE `piece` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `player`
@@ -103,18 +60,10 @@ DROP TABLE IF EXISTS `player`;
 CREATE TABLE `player` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `dni` int(11) NOT NULL,
+  `password` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `player`
---
-
-LOCK TABLES `player` WRITE;
-/*!40000 ALTER TABLE `player` DISABLE KEYS */;
-/*!40000 ALTER TABLE `player` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -125,4 +74,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-17  1:04:22
+-- Dump completed on 2016-01-30 15:45:49

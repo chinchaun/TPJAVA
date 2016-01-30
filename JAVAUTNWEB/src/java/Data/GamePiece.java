@@ -74,7 +74,7 @@ public class GamePiece {
             stmt.setInt(1, game.getId());
             stmt.setInt(2, game.getWhite().getId());
             stmt.setInt(3, game.getBlack().getId());
-            stmt.setInt(5, pieceId);
+            stmt.setInt(4, pieceId);
             stmt.execute();
 
         } catch (SQLException e) {

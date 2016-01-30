@@ -25,14 +25,15 @@ public class Game {
         try {
             
             stmt = ConexionFactory.getInstancia().getConn().prepareStatement(
-                        "select id, idplayer1, idplayer2 from game a;");
+                    "SELECT a.id, b.dni as 'bdni', c.dni as 'cdni' , a.idplayer1, a.idplayer2 FROM game a INNER JOIN player b ON a.idplayer1 = b.id INNER JOIN player c ON a.idplayer2 = c.id;");
             rs = stmt.executeQuery();
             
             while(rs.next()){
                 
-                Models.Player player1 = new Models.Player(rs.getInt("id"));
-                Models.Player player2 = new Models.Player(rs.getInt("id"));
-                
+                Models.Player player1 = new Models.Player(rs.getInt("bdni"));
+                player1.setId(rs.getInt("idplayer1"));
+                Models.Player player2 = new Models.Player(rs.getInt("cdni"));
+                player2.setId(rs.getInt("idplayer2"));
                 Models.Game game = new Models.Game(rs.getInt("id"), player1, player2);
                 games.add(game); 
             }
@@ -97,4 +98,6 @@ public class Game {
             }
          return idgame;
     };
+    
+   
 }

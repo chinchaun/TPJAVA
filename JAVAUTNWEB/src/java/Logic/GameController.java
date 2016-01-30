@@ -108,11 +108,26 @@ public  class  GameController {
         this.game.getBlack().setId(Data.Player.savePlayer(this.game.getBlack()));
         this.game.setId(Data.Game.saveGame(this.game));
         for (Piece piece : this.game.getWhite().getPieces()) {
-            piece.setId(Data.Piece.savePiece(piece));
+            piece.setId(Data.Piece.savePiece(piece, this.game.getId(), this.game.getWhite().getId()));
             Data.GamePiece.saveGamePiece(this.game, piece.getId());
         }
         for (Piece piece : this.game.getBlack().getPieces()) {
-            piece.setId(Data.Piece.savePiece(piece));
+            piece.setId(Data.Piece.savePiece(piece, this.game.getId(), this.game.getBlack().getId()));
+            Data.GamePiece.saveGamePiece(this.game, piece.getId());
+        }
+        
+    }
+    
+        public void saveGame(){
+       // this.game.getWhite().setId(Data.Player.savePlayer(this.game.getWhite()));
+        this.game.getBlack().setId(Data.Player.savePlayer(this.game.getBlack()));
+        this.game.setId(Data.Game.saveGame(this.game));
+        for (Piece piece : this.game.getWhite().getPieces()) {
+            piece.setId(Data.Piece.savePiece(piece, this.game.getId(), this.game.getWhite().getId()));
+            Data.GamePiece.saveGamePiece(this.game, piece.getId());
+        }
+        for (Piece piece : this.game.getBlack().getPieces()) {
+            piece.setId(Data.Piece.savePiece(piece, this.game.getId(), this.game.getBlack().getId()));
             Data.GamePiece.saveGamePiece(this.game, piece.getId());
         }
         

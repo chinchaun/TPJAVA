@@ -2,28 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/Users/jjdelannoy/Documents/GitHub/TPJAVA/TPJAVA/TPJAVAUTN/src/Models/Queen.java</file>
-            <file>file:/Users/jjdelannoy/Documents/GitHub/TPJAVA/TPJAVA/TPJAVAUTN/src/Logic/GameController.java</file>
-            <file>file:/Users/jjdelannoy/Documents/GitHub/TPJAVA/TPJAVA/TPJAVAUTN/src/Data/ConexionFactory.java</file>
-            <file>file:/Users/jjdelannoy/Documents/GitHub/TPJAVA/TPJAVA/TPJAVAUTN/src/Desktop/Tablero.java</file>
-            <file>file:/Users/jjdelannoy/Documents/GitHub/TPJAVA/TPJAVA/TPJAVAUTN/src/Models/Knight.java</file>
-            <file>file:/Users/jjdelannoy/Documents/GitHub/TPJAVA/TPJAVA/TPJAVAUTN/src/Desktop/TableroGrilla.java</file>
-            <file>file:/Users/jjdelannoy/Documents/GitHub/TPJAVA/TPJAVA/TPJAVAUTN/src/Data/GamePiece.java</file>
-            <file>file:/Users/jjdelannoy/Documents/GitHub/TPJAVA/TPJAVA/TPJAVAUTN/src/Models/Bishop.java</file>
-            <file>file:/Users/jjdelannoy/Documents/GitHub/TPJAVA/TPJAVA/TPJAVAUTN/src/Data/Player.java</file>
-            <file>file:/Users/jjdelannoy/Documents/GitHub/TPJAVA/TPJAVA/TPJAVAUTN/src/Models/PieceEnum.java</file>
-            <file>file:/Users/jjdelannoy/Documents/GitHub/TPJAVA/TPJAVA/TPJAVAUTN/src/Models/Board.java</file>
-            <file>file:/Users/jjdelannoy/Documents/GitHub/TPJAVA/TPJAVA/TPJAVAUTN/src/Models/Player.java</file>
-            <file>file:/Users/jjdelannoy/Documents/GitHub/TPJAVA/TPJAVA/TPJAVAUTN/src/Data/Piece.java</file>
-            <file>file:/Users/jjdelannoy/Documents/GitHub/TPJAVA/TPJAVA/TPJAVAUTN/src/Desktop/Menu.java</file>
-            <file>file:/Users/jjdelannoy/Documents/GitHub/TPJAVA/TPJAVA/TPJAVAUTN/src/Models/Spot.java</file>
-            <file>file:/Users/jjdelannoy/Documents/GitHub/TPJAVA/TPJAVA/TPJAVAUTN/src/Models/Pawn.java</file>
-            <file>file:/Users/jjdelannoy/Documents/GitHub/TPJAVA/TPJAVA/TPJAVAUTN/src/Data/Game.java</file>
-            <file>file:/Users/jjdelannoy/Documents/GitHub/TPJAVA/TPJAVA/TPJAVAUTN/src/Models/Game.java</file>
-            <file>file:/Users/jjdelannoy/Documents/GitHub/TPJAVA/TPJAVA/TPJAVAUTN/src/Models/Rook.java</file>
-            <file>file:/Users/jjdelannoy/Documents/GitHub/TPJAVA/TPJAVA/TPJAVAUTN/src/Models/King.java</file>
-            <file>file:/Users/jjdelannoy/Documents/GitHub/TPJAVA/TPJAVA/TPJAVAUTN/src/Models/Piece.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

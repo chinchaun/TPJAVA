@@ -15,6 +15,7 @@ import Models.Player;
 import Models.Queen;
 import Models.Rook;
 import Models.Spot;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +36,15 @@ public  class  GameController {
     public void InitializeGame(boolean isNewGame, int dni1, int dni2){
         if(isNewGame){
             newGame(dni1, dni2);
-        };
+        }
+    }
+    
+    public void LoadSavedGame(Game game) throws SQLException{
+        List<Piece> whitePieces = Data.Piece.getByGameIdAndPlayerid(game.getId(), game.getWhite().getId());
+        List<Piece> blackPieces = Data.Piece.getByGameIdAndPlayerid(game.getId(), game.getBlack().getId());
+        Player WhitePlayer = new Player(game.getWhite().getDni(), whitePieces);
+        Player BlackPlayer = new Player(game.getBlack().getDni(), blackPieces);
+        this.game = new Game(WhitePlayer, BlackPlayer);
     }
 
     private void newGame(int dni1, int dni2) {
@@ -103,14 +112,19 @@ public  class  GameController {
         this.game.getBlack().setId(Data.Player.savePlayer(this.game.getBlack()));
         this.game.setId(Data.Game.saveGame(this.game));
         for (Piece piece : this.game.getWhite().getPieces()) {
-            piece.setId(Data.Piece.savePiece(piece));
+            piece.setId(Data.Piece.savePiece(piece, this.game.getId(), this.game.getWhite().getId()));
             Data.GamePiece.saveGamePiece(this.game, piece.getId());
         }
         for (Piece piece : this.game.getBlack().getPieces()) {
-            piece.setId(Data.Piece.savePiece(piece));
+            piece.setId(Data.Piece.savePiece(piece, this.game.getId(), this.game.getBlack().getId()));
             Data.GamePiece.saveGamePiece(this.game, piece.getId());
         }
         
+    }
+    
+    public List<Models.Game> getAllSavedGames(){
+        List<Models.Game> savedGames = Data.Game.getAll();
+        return savedGames;
     }
     
 }

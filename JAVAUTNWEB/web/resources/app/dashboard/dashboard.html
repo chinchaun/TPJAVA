@@ -1,16 +1,51 @@
 ﻿<section id="dashboard-view" class="mainbar" data-ng-controller="dashboard as vm">
-    <section class="matter">
+    <section class="matter" ng-hide="vm.player">
         <div class="container">
-            <div class="row">
-                <label>Jugador 1</label>
-                <input type="text" class="form-control" ng-model="vm.id1"style="width: 10%" >
-                <button type="button" class="btn btn-primary" ng-click="vm.getGame()">Jugar!</button>
+            <div class="col-md-6">
+                <div class="row">
+                    <h3> Log in </h3>
+                    <label>Dni</label>
+                    <input type="text" class=""  ng-model="vm.playerLogin.dni">
+                    <label>Password</label>
+                    <input type="password" class="" id="ApellidoPaciente" ng-model="vm.playerLogin.password">
+                    <button type="button" class="btn btn-primary" ng-click="vm.logIn()">Log In</button>
+                </div>
             </div>
+            <div class="col-md-6">
+                <div class="row">
+                    
+                    <h3> Registrarse </h3>
+                        <label>Dni</label>
+                        <input type="text" class=""  ng-model="vm.playersignUp.dni">
+                        <label>Password</label>
+                    <input type="password" class="" id="ApellidoPaciente" ng-model="vm.playersignUp.password">
+                    <button type="button" class="btn btn-primary" ng-click="vm.signUp()">Registrarse</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="matter" ng-show="vm.player">
+        <div class="container">
+                <div class="col-md-6">
+                     <div class="row">
+                        <label>Jugador 1</label>
+                        <input type="text" class="form-control" ng-model="vm.player.dni"style="width: 10%" >
+                        <button type="button" class="btn btn-primary" ng-click="vm.getGame()">Jugar!</button>
+                        <select ng-model="vm.currentGame" ng-options="row[1] for row in vm.player.storedGames">
+                            <option value="">DNI Contrincante</option>
+                            <option value="">{{row[1]}}</option>
+                        </select>
+                        <button type="button" class="btn btn-primary" ng-click="vm.getStoreGame()">Recuperar</button>
+                    </div>
             <div class="row">
             <label>Jugador 2</label>
                 <input type="text" class="form-control" ng-model="vm.id2" style="width: 10%" >
                 <button type="button" class="btn btn-primary" ng-click="vm.saveGame()">Guardar Partida!</button>
              </div>
+                
+        </div>
+        </div>
             <div class="row">
                 <div class="col-md-6">
                     <div class="widget wviolet">

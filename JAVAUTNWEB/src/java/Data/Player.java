@@ -43,7 +43,7 @@ public  class Player {
                 ConexionFactory.getInstancia().releaseConn();
         }
         return player;
-    }
+    };
     
     public static int savePlayer(Models.Player player){
         
@@ -79,6 +79,70 @@ public  class Player {
             ConexionFactory.getInstancia().releaseConn();
             }
          return idplayer;
+    };
+    
+    public static Models.Player getPlayerByDni(int dni){
+        ResultSet rs=null;
+        PreparedStatement stmt=null;
+        Models.Player player = null;     
+
+        try {
+            stmt = ConexionFactory.getInstancia().getConn().prepareStatement(
+                        "SELECT id, dni, password FROM player where dni = ? ");
+            stmt.setInt(1, dni);
+            rs = stmt.executeQuery();
+            if(rs !=null && rs.next()){
+                player = new Models.Player(rs.getInt("dni"));
+                player.setId(rs.getInt("id"));
+                player.setPassword(rs.getString("password"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally{
+                try {
+                        if(rs!=null)rs.close();
+                        if(stmt!=null) stmt.close();
+                } catch (SQLException e) {
+                        e.printStackTrace();
+                }
+                ConexionFactory.getInstancia().releaseConn();
+        }
+        return player;
+    }
+    
+    public static int signUp(Models.Player player){
+        
+        ResultSet rs=null;
+        PreparedStatement stmt=null;
+        int idplayer = 0;
+        try {
+
+            stmt = ConexionFactory.getInstancia().getConn().prepareStatement(
+                            "insert into player(dni, password) values (?, ?)",PreparedStatement.RETURN_GENERATED_KEYS
+                       );
+            stmt.setInt(1, player.getDni());
+            stmt.setString(2, player.getPassword());
+            stmt.executeUpdate();
+            ResultSet rsId = stmt.getGeneratedKeys();
+            rsId.next();
+            idplayer = rsId.getInt(1);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally{
+
+            try {
+                if(rs!=null ) rs.close();
+                if(stmt != null) stmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            ConexionFactory.getInstancia().releaseConn();
+            }
+        return idplayer;
     };
     
    

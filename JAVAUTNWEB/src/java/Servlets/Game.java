@@ -11,21 +11,23 @@ package Servlets;
  */
 // Import required java libraries
 import java.io.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 // Extend HttpServlet class
 @WebServlet("/game")
 public class Game extends HttpServlet {
- private Logic.GameController gameCtrl;
- private Gson gson;
+private Logic.GameController gameCtrl;
+private Gson gson;
 
   public void init() throws ServletException
   {
@@ -38,7 +40,24 @@ public class Game extends HttpServlet {
                     HttpServletResponse response)
             throws ServletException, IOException
   {
-     gameCtrl.InitializeGame(true, Integer.parseInt(request.getParameter("id1")) ,  Integer.parseInt(request.getParameter("id2")));
+      Boolean isNewGame = Boolean.valueOf( request.getParameter("isNewGame").toString());
+      
+      if(isNewGame){
+          gameCtrl.InitializeGame(true, Integer.parseInt(request.getParameter("id1")) ,  Integer.parseInt(request.getParameter("id2")));
+      }
+      else{
+         Integer gameId = Integer.parseInt(request.getParameter("gameId"));
+         gameCtrl.setGame(Data.Game.getById(gameId));
+          try {
+              gameCtrl.getGame().getWhite().setPieces(Data.Piece.getByGameIdAndPlayerid(gameId, gameCtrl.getGame().getWhite().getId()));
+              gameCtrl.getGame().getBlack().setPieces(Data.Piece.getByGameIdAndPlayerid(gameId, gameCtrl.getGame().getBlack().getId()));
+          } catch (SQLException ex) {
+              Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+          }
+         
+      };
+      
+     
      response.setContentType("application/json");
                 response.setHeader("Cache-Control", "nocache");
         	response.setCharacterEncoding("utf-8");
@@ -49,11 +68,35 @@ public class Game extends HttpServlet {
   public void doPost(HttpServletRequest request,
                     HttpServletResponse response)
             throws ServletException, IOException
-  {
-     Object game = this.gson.fromJson(request.getParameter("board"), Models.Game.class);
-     //this.gameCtrl.setGame(game);
-     //this.gameCtrl.saveGame(this.gameCtrl.getGame().getWhite().getDni(), this.gameCtrl.getGame().getBlack().getDni());
-     
+  {  
+     StringBuffer sb = new StringBuffer();
+ 
+    try 
+    {
+      BufferedReader reader = request.getReader();
+      String line = null;
+      while ((line = reader.readLine()) != null)
+      {
+        sb.append(line);
+      }
+    } catch (Exception e) { e.printStackTrace(); }
+ 
+    JSONParser parser = new JSONParser();
+    JSONObject joUser = null;
+    try
+    {
+      joUser = (JSONObject) parser.parse(sb.toString());
+      Gson gsonObj = new Gson();
+      this.gameCtrl.setGame(gsonObj.fromJson(joUser.get("game").toString(), Models.Game.class));
+    } catch (ParseException e) { 
+        e.printStackTrace(); 
+    }
+    
+    this.gameCtrl.saveGame();
+    
+    response.setStatus(200);
+    response.getWriter().write("Game Saved!");
+ 
   }
   
   public void destroy()

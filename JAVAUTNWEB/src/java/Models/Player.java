@@ -18,12 +18,18 @@ public class Player {
     public final int ROOKS = 2;
     public int dni;
     public int id;
+    public String password;
+    public List<String> storedGames;
 
     private List<Piece> pieces = new ArrayList<>();
 
     public Player(int dni){
         super();
         this.dni = dni;
+    }
+    
+    public Player() {
+        super();
     }
     
     public Player(int dni, List<Piece> pieces) {
@@ -64,6 +70,22 @@ public class Player {
     
     public void setId(int id){
         this.id = id;
+    }
+    
+    public String getPassword(){
+        return this.password;
+    }
+    
+    public void setPassword(String password){
+        this.password = password;
+    }
+    
+    public List<String> getStoredGames(){
+        return this.storedGames;
+    }
+    
+    public void setStoredGames (List<String> storedGames){
+        this.storedGames = storedGames;
     }
 
     
